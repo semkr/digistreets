@@ -31,12 +31,12 @@ void loop(){
   int val = digitalRead(inPin);
   Serial.println(val);
   
-  if(val == LOW){
+  if(val == HIGH){
     delay(1000);
     val = digitalRead(inPin);
     Serial.println(val);
     Serial.println("1st yes");
-    if(val == LOW){    
+    if(val == HIGH){    
       //mp3_play(1);
       Serial.println("2nd yes");
         digitalWrite(outPin, LOW);
