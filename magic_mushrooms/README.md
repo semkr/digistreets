@@ -1,6 +1,6 @@
 ## Magic Mushrooms
 
-![Diagram](1.png)
-![Prototype](2.png)
-![Prototype Iterations](3.png)
-![Building the mushrooms](4.png)
+![Diagram](1.jpg)
+![Prototype](2.jpg)
+![Prototype Iterations](3.jpg)
+![Building the mushrooms](4.jpg)
