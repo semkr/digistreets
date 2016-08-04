@@ -3,6 +3,7 @@
 ### Synopsis
 The idea for this project is to **create talking litter bins** during Imagine Festival.
 
+![](trash_talk_circuit.png)
 ![](01.jpg)
 ![](02.jpg)
 ![](03.jpg)
