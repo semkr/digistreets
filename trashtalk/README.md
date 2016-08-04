@@ -3,9 +3,9 @@
 ### Synopsis
 The idea for this project is to **create talking litter bins** during Imagine Festival.
 
-!(01.jpg)
-!(02.jpg)
-!(03.jpg)
+![](01.jpg)
+![](02.jpg)
+![](03.jpg)
 
 Urban rubbish bins are utilitarian devices. While the design of urban bins may continue to evolve, their function always remains the same. They are in situ to aid in keeping our streets clean and rely on the voluntary participation of humans to work effectively. Can we re-imaging a new design that might increase this voluntary participation? 
 What would happen if we create bins that aims to amuse, bewilder or entertain?
