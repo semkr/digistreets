@@ -5,14 +5,16 @@
  * Github: https://github.com/semkr/digistreets
  * Wiki: https://wiki.southeastmakerspace.org/projects/digistreets/talking_rubbish/start
  * Version: 0.1.0
+ *
+ * This sketch uses the NewPing library which you can get at: http://playground.arduino.cc/Code/NewPing
  */
  
 #include <NewPing.h>
 
-#define TRIGGER_PIN  3  // Arduino pin tied to trigger pin on the ultrasonic sensor.
-#define ECHO_PIN     4  // Arduino pin tied to echo pin on the ultrasonic sensor.
+#define TRIGGER_PIN  0  // Arduino pin tied to trigger pin on the ultrasonic sensor.
+#define ECHO_PIN     1  // Arduino pin tied to echo pin on the ultrasonic sensor.
 #define MAX_DISTANCE 200 // Maximum distance we want to ping for (in centimeters). Maximum sensor distance is rated at 400-500cm.
-#define PIN_OUT 5
+#define PIN_OUT 2
 
 unsigned int value;
 unsigned int distance;
@@ -23,14 +25,14 @@ unsigned int high;
 NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE); // NewPing setup of pins and maximum distance.
 
 void play(){
-  Serial.println(" Trigger");
+  //Serial.println(" Trigger");
   digitalWrite(PIN_OUT, LOW);
   delay(100);
   digitalWrite(PIN_OUT, HIGH);
 }
 
 void setup() {
-  Serial.begin(9600); // Open serial monitor at 115200 baud to see ping results.
+  //Serial.begin(9600); // Open serial monitor at 115200 baud to see ping results.
   value = 0;
   low = 0;
   high = 0;
@@ -54,7 +56,7 @@ void loop() {
       low = distance - tenPer;  
     }
     high = distance + tenPer;
-  
+ /* 
     Serial.print(value); // Send ping, get distance in cm and print result (0 = outside set distance range)
     Serial.print(", ");
     Serial.print(tenPer);
@@ -62,14 +64,14 @@ void loop() {
     Serial.print(low);
     Serial.print(", ");
     Serial.print(high);
-  
+ */ 
     if(value < low || value > high){
       play();
       delay(3000);
       distance = sonar.convert_cm(sonar.ping_median(40));
     }
     else {
-      Serial.println();
+      //Serial.println();
     }
   }
 }
