@@ -40,10 +40,10 @@ boolean check_distance(){
   low_threshold = previous_distance - threshold; // 25% lower than previous_distance
   high_threshold = previous_distance + threshold; // 25% higher than previous_distance
 
-  if(low_threshold < 0) { low_threshold = 0; }
-  if(high_threshold > MAX_DISTANCE) { high_threshold = MAX_DISTANCE; }
+  if(low_threshold < 0) { low_threshold = 0; } // Ensure the low_threshold does not go negative
+  if(high_threshold > MAX_DISTANCE) { high_threshold = MAX_DISTANCE; } // Ensure we are activating only up to the MAX_DISTANCE value
 
-  if(distance < low_threshold || distance > high_threshold){ 
+  if(distance <= low_threshold || distance > high_threshold){ 
     // If the new distance is more than 25% lower or higher than the previous distance, activate
     return true;
   }
