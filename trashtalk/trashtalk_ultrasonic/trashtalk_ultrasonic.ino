@@ -11,11 +11,11 @@
  
 #include <NewPing.h>
 
+#define MAX_DISTANCE 80 // Maximum distance we want to ping for (in centimeters). Maximum sensor distance is rated at 400-500cm.
 #define TRIGGER_PIN  0  // Arduino pin tied to trigger pin on the ultrasonic sensor.
 #define ECHO_PIN     1  // Arduino pin tied to echo pin on the ultrasonic sensor.
-#define MAX_DISTANCE 60 // Maximum distance we want to ping for (in centimeters). Maximum sensor distance is rated at 400-500cm.
-#define PIN_OUT 2       // Go low to activate MP3 module
-#define PLAY_TIME 15    // Number of seconds it will allow an mp3 file to play for without possible interruption
+#define PIN_OUT      2  // Go low to activate MP3 module
+#define PLAY_TIME    15 // Number of seconds it will allow an mp3 file to play for without possible interruption
 
 unsigned int distance;
 unsigned int previous_distance;
@@ -27,6 +27,7 @@ NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE); // NewPing setup of pins and
 
 
 void play(){
+  //Serial.println("play");
   digitalWrite(PIN_OUT, LOW);
   delay(100);
   digitalWrite(PIN_OUT, HIGH);
@@ -34,7 +35,8 @@ void play(){
 }
 
 boolean check_distance(){
-  if(distance == 5){ return false; } // Seem to be getting a lot of invalid values from the sensor/library ignore
+  //Serial.println("check_distance");
+  if(distance == 5 || distance == 0){ return false; } // Seem to be getting a lot of invalid values from the sensor/library ignore
   
   threshold = (previous_distance / 5) + 1; // Calculate what 25% of the previous distance is
   low_threshold = previous_distance - threshold; // 25% lower than previous_distance
@@ -53,6 +55,7 @@ boolean check_distance(){
 }
 
 void setup() {
+  //Serial.begin(9600);
   pinMode(PIN_OUT, OUTPUT);
   digitalWrite(PIN_OUT, HIGH);
   delay(3000); // allow things to stabilize, incase the mp3 module needs time
@@ -62,7 +65,8 @@ void setup() {
 
 void loop() {
   distance = sonar.convert_cm(sonar.ping_median(15)); // Take 15 readings and average them
-
+  //Serial.println(distance);
+  
   if(check_distance()){
     play();
     previous_distance = distance;
